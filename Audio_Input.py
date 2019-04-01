@@ -6,7 +6,7 @@ from neopixel import *
 
 
 # Constants for Audio Input
-CHUNK = 1024*2
+CHUNK = 512
 RATE = 44100
 FORMAT = pyaudio.paInt16
 
@@ -42,13 +42,14 @@ while True:
 
     # pitch is frequency with highest magnitude
     pitch = np.argmax(data_dft)
+    print(pitch)
 
 
     # map pitch to colour(HSV):
     # Range of pitch is usually [0,500], so calculate hue value (0 to 1) of Hsv as: pitch/500
     hue = 1.0
-    if pitch < 100:
-        hue =  pitch/100.0
+    if pitch < 15:
+        hue =  pitch/15.0
     print(hue)
     # calculate (normalized) rgb value for easier output
     (r,g,b) = colorsys.hsv_to_rgb(hue,0.75,0.75)
