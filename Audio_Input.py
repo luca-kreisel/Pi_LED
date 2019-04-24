@@ -2,11 +2,12 @@ import pyaudio
 import numpy as np
 import colorsys
 from neopixel import *
+import time
 
 
 
 # Constants for Audio Input
-CHUNK = 512
+CHUNK = 256
 RATE = 44100
 FORMAT = pyaudio.paInt16
 
@@ -20,6 +21,9 @@ LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
+#list of current colour values
+current = []
+
 # Setup pyaudio and stream
 p = pyaudio.PyAudio()
 stream = p.open(format=FORMAT,
@@ -29,6 +33,8 @@ stream = p.open(format=FORMAT,
 #Setup led strip
 strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 strip.begin()
+for i in range(strip.numPixels()):
+	current.append((0, 0,0))
 
 while True:
     # Get pitch of input every 0.1s
@@ -42,23 +48,47 @@ while True:
 
     # pitch is frequency with highest magnitude
     pitch = np.argmax(data_dft)
-    print(pitch)
-
+    
 
     # map pitch to colour(HSV):
     # Range of pitch is usually [0,500], so calculate hue value (0 to 1) of Hsv as: pitch/500
     hue = 1.0
-    if pitch < 15:
-        hue =  pitch/15.0
-    print(hue)
+    if pitch < 20:
+        hue =  pitch/20.0
+    
     # calculate (normalized) rgb value for easier output
     (r,g,b) = colorsys.hsv_to_rgb(hue,0.75,0.75)
 
     (r,g,b) = (r*255,g*255,b*255)
+    
+
+
 
     #output using neopixel
+
+   
+    for i in range (LED_COUNT-1,0,-1):
+	current[i] = current[i-1]
+        
+    current[0] = (int(r), int(g),int(b))
+    current[1] = (int(r), int(g),int(b))
+    current[2] = (int(r), int(g),int(b))
+    current[3] = (int(r), int(g),int(b))
+    current[4] = (int(r), int(g),int(b))
+    current[5] = (int(r), int(g),int(b))
+    current[6] = (int(r), int(g),int(b))
+    current[7] = (int(r), int(g),int(b))
+    current[8] = (int(r), int(g),int(b))
+    current[9] = (int(r), int(g),int(b))
+
+
+    
+
+	
     for i in range(strip.numPixels()):
-            strip.setPixelColorRGB(i, int(r), int(g),int(b))
+	    r_i,g_i,b_i = current[i]
+            strip.setPixelColorRGB(i, int(r_i), int(g_i),int(b_i))
+	    
     strip.show()
 
 
