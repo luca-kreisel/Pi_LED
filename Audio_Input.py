@@ -48,6 +48,7 @@ while True:
 
     # pitch is frequency with highest magnitude
     pitch = np.argmax(data_dft)
+    print(pitch)
     
 
     # map pitch to colour(HSV):
