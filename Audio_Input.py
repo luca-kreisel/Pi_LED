@@ -68,7 +68,7 @@ while True:
 
    
     for i in range (LED_COUNT-1,0,-1):
-	current[i] = current[i-1]
+	    current[i] = current[i-1]
         
     current[0] = (int(r), int(g),int(b))
     current[1] = (int(r), int(g),int(b))
