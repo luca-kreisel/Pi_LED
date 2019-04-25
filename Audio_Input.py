@@ -53,7 +53,7 @@ while True:
     # map pitch to colour(HSV):
     # Range of pitch is usually [0,500], so calculate hue value (0 to 1) of Hsv as: pitch/500
     hue = 1.0
-    if pitch < 25
+    if pitch < 25:
         hue =  pitch/25.0
     
     # calculate (normalized) rgb value for easier output
