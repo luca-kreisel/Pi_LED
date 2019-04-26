@@ -7,7 +7,7 @@ import time
 
 
 # Constants for Audio Input
-CHUNK = 512
+CHUNK = 2048
 RATE = 44100
 FORMAT = pyaudio.paInt16
 
@@ -53,8 +53,8 @@ while True:
     # map pitch to colour(HSV):
     # Range of pitch is usually [0,500], so calculate hue value (0 to 1) of Hsv as: pitch/500
     hue = 1.0
-    if pitch < 12:
-        hue =  pitch/12.0
+    if pitch < 50:
+        hue =  pitch/50.0
     
     # calculate (normalized) rgb value for easier output
     (r,g,b) = colorsys.hsv_to_rgb(hue,0.75,0.75)
