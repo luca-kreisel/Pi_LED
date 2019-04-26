@@ -67,8 +67,8 @@ while True:
     #output using neopixel
 
    
-    for i in range (LED_COUNT-1,2,-1):
-	    current[i] = current[i-3]
+    for i in range (LED_COUNT-1,9,-1):
+	    current[i] = current[i-10]
         
     current[0] = (int(r), int(g),int(b))
     current[1] = (int(r), int(g),int(b))
