@@ -34,9 +34,9 @@ while True:
         data_recv = s_new.recv(34)
 
         data = data_recv.decode(encoding="utf-8")
-        r = int(data[0:2])
-        g = int(data[3:5])
-        b = int(data[6:8])
+        r = int(data[0:2].lstrip('0'))
+        g = int(data[3:5].lstrip('0'))
+        b = int(data[6:8].lstrip('0'))
 
         #display colour on strip
         for i in range(strip.numPixels()):
