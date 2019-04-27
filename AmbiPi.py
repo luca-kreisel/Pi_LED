@@ -1,4 +1,4 @@
-from PIL import ImageGrab
+from PIL import ImageGrab, Image
 import numpy as np
 
 import time
@@ -9,7 +9,7 @@ import  sys
 
 
 #Constants
-WAIT = 0.01
+WAIT = 0.1
 Pi_IP = "192.168.1.158"
 Pi_Port = 6000
 
@@ -23,22 +23,10 @@ s.connect((Pi_IP,Pi_Port))
 while True:
     #Get Screenshot using ImageGrab and convert it to numpy array, concatinate it so it is only one continuous array of pixels
     screenshot = ImageGrab.grab()
-    screenshot = screenshot.resize((100,100))
+    screenshot = screenshot.resize((1,1))
     screen_np = np.array(screenshot)
-    (i,j,k) = screen_np.shape
-    screen_np = np.reshape(screen_np,(i*j,k))
 
-
-
-
-
-    #Find the most frequent colour
-    colours, counts = np.unique(screen_np, return_counts=True, axis= 0)
-    most_frequent_colour = colours[np.argmax(counts)]
-    print(most_frequent_colour)
-    r = most_frequent_colour[0]
-    g = most_frequent_colour[1]
-    b = most_frequent_colour[2]
+    (r,g,b) = screen_np[0][0]
 
 
     #send data over tcp socket to Pi:
