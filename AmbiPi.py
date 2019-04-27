@@ -9,7 +9,7 @@ import  sys
 
 
 #Constants
-WAIT = 0.05
+WAIT = 0.01
 Pi_IP = "192.168.1.158"
 Pi_Port = 6000
 
@@ -23,7 +23,7 @@ s.connect((Pi_IP,Pi_Port))
 while True:
     #Get Screenshot using ImageGrab and convert it to numpy array, concatinate it so it is only one continuous array of pixels
     screenshot = ImageGrab.grab()
-    screenshot = screenshot.resize((150,150))
+    screenshot = screenshot.resize((100,100))
     screen_np = np.array(screenshot)
     (i,j,k) = screen_np.shape
     screen_np = np.reshape(screen_np,(i*j,k))
@@ -44,8 +44,8 @@ while True:
     #send data over tcp socket to Pi:
 
     #first create string and pad zeros
-    r_s = str(r).zfill(3)
-    g_s = str(g).zfill(3)
+    r_s = str(g).zfill(3)
+    g_s = str(r).zfill(3)
     b_s = str(b).zfill(3)
 
     data = (r_s + g_s + b_s).encode()
