@@ -41,11 +41,11 @@ while True:
         print(g_s)
         print(b_s)
         r = g= b= 0
-        if r_s != "":
+        if r_s != '':
             r = int(r_s.lstrip('0'))
-        if g_s != "":
+        if g_s != '':
             g = int(g_s.lstrip('0'))
-        if b_s != "":
+        if b_s != '':
             b = int(b_s.lstrip('0'))
 
         #display colour on strip
