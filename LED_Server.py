@@ -1,6 +1,6 @@
 import socket
 from neopixel import *
-import time
+
 
 
 # LED strip configuration:
@@ -55,7 +55,7 @@ while True:
         strip.show()
         print (r,g,b)
 
-        time.sleep(0.05)
+
 
 
 
