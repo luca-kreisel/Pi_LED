@@ -49,14 +49,15 @@ while True:
         if b_s != '':
             b = int(b_s)
         #Calculate brightness so no voltage drop on the led
-        relative = (3*255)/(r+g+b)*45
-        print (relative)
+        relative = int((3*255)/(r+g+b)*45)
+        if relative>255:
+            relative = 255
 
 
         #display colour on strip
         for i in range(300):
             strip.setPixelColorRGB(i, r,g, b)
-        strip.setBrightness( int(relative))
+        strip.setBrightness(relative)
         strip.show()
         print (r,g,b)
 
