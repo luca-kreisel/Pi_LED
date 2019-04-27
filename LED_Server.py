@@ -52,7 +52,7 @@ while True:
         #display colour on strip
         for i in range(strip.numPixels()):
             strip.setPixelColorRGB(i, r,g, b)
-            strip.show()
+        strip.show()
         print (r,g,b)
 
         time.sleep(0.05)
