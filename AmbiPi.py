@@ -3,7 +3,7 @@ import numpy as np
 
 import time
 import socket
-import pickle
+
 import  sys
 
 
@@ -43,11 +43,19 @@ while True:
 
     #send data over tcp socket to Pi:
 
-    #marshall data first (resulting size 29)
-    data = pickle.dumps((r,g,b), protocol=2)
-    #send it over tcp
+    #first create string and pad zeros
+    r_s = str(r).zfill(3)
+    g_s = str(g).zfill(3)
+    b_s = str(b).zfill(3)
+
+    data = (r_s + g_s + b_s).encode()
+
     print (sys.getsizeof(data))
+
+    #then send string over tcp
     s.send(data)
+
+
 
 
 

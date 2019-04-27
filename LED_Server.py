@@ -1,5 +1,5 @@
 import socket
-import pickle
+
 
 #Create and bind socket
 
@@ -15,8 +15,8 @@ while True:
     s_new, client = s.accept()
     print (client)
     while True:
-        data_recv = s_new.recv(226)
+        data_recv = s_new.recv(34)
 
-        data = pickle.loads(data_recv)
+        data = data_recv.decode(encoding="utf-8")
         print (data)
 
