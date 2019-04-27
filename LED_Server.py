@@ -55,7 +55,7 @@ while True:
         #display colour on strip
         for i in range(300):
             strip.setPixelColorRGB(i, r,g, b)
-            strip.setBrightness(i, int(relative * 45))
+        strip.setBrightness( int(relative * 45))
         strip.show()
         print (r,g,b)
 
