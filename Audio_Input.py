@@ -70,16 +70,16 @@ while True:
     for i in range (LED_COUNT-1,9,-1):
 	    current[i] = current[i-10]
         
-    current[0] = (int(r), int(g),int(b))
-    current[1] = (int(r), int(g),int(b))
-    current[2] = (int(r), int(g),int(b))
-    current[3] = (int(r), int(g),int(b))
-    current[4] = (int(r), int(g),int(b))
-    current[5] = (int(r), int(g),int(b))
-    current[6] = (int(r), int(g),int(b))
-    current[7] = (int(r), int(g),int(b))
-    current[8] = (int(r), int(g),int(b))
-    current[9] = (int(r), int(g),int(b))
+    current[0] = (int(g), int(r),int(b))
+    current[1] = (int(g), int(r),int(b))
+    current[2] = (int(g), int(r),int(b))
+    current[3] = (int(g), int(r),int(b))
+    current[4] = (int(g), int(r),int(b))
+    current[5] = (int(g), int(r),int(b))
+    current[6] = (int(g), int(r),int(b))
+    current[7] = (int(g), int(r),int(b))
+    current[8] = (int(g), int(r),int(b))
+    current[9] = (int(g), int(r),int(b))
 
 
     
