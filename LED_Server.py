@@ -49,7 +49,7 @@ while True:
         if b_s != '':
             b = int(b_s)
         #Calculate brightness so no voltage drop on the led
-        relative = int((3*255)/(r+g+b)*45)
+        relative = int((3*255)/(r+g+b+1)*45)
         if relative>255:
             relative = 255
 
