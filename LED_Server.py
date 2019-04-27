@@ -15,7 +15,7 @@ while True:
     s_new, client = s.accept()
     print (client)
     while True:
-        data_recv = s_new.recv(160)
+        data_recv = s_new.recv(226)
 
         data = pickle.loads(data_recv)
         print (data)

@@ -44,7 +44,7 @@ while True:
     #send data over tcp socket to Pi:
 
     #marshall data first (resulting size 29)
-    data = pickle.dumps((r,g,b))
+    data = pickle.dumps((r,g,b), protocol=2)
     #send it over tcp
     print (sys.getsizeof(data))
     s.send(data)
